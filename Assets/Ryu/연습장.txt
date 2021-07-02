@@ -1,0 +1,81 @@
+일단 첫번째,
+
+적의 생성과 아이템 상호작용
+하트(체력), 특수총(총 자체, 총알)
+
+
+첫번째, 내가 뭘 만들고 싶은지
+두번째, 그걸 누구한테 시킬지 <- 해당 객체가 무엇을 해야 하는지
+세번째, 해당 객체가 어느 정보를 알아야하는지
+
+
+
+1. 적 스폰
+적을 생성하고 싶다. 이게 핵심 요소
+1. 적(프리팹)을 맵에 생성한다
+1-1
+
+스폰 가능 위치 많이 찍어
+이것중 몇개를 랜덤으로 골라
+그래서 생성 
+
+EnemySpawnManager
+EnemySpawn
+
+1) SpawnerManager
+-> 스포너들을 관리한다
+-> 어떤 스포너에서 생성시킬지 정해서 해당 스포너에게 전달
+-> 웨이브에 따라 생성량 결정
+-> 보스 생성 명령
+
+	enemyspawners,BossSpawner,웨이브
+
+	RandomSpawnerPos() SpawnEnemy() 스포너들중 랜덤으로 골라준다
+	EnemyWave() GetSpawnNum() 적의 생성 수를 관리한다
+	SpawnBoss()
+
+2) EnemySpawner
+-> 어떤 적을 생성할건지 랜덤 결정
+-> 적 프리팹을 가져와서 자기 위치에 생성한다
+
+	enemyPrefabs
+
+	Spawn() 적을 자기 위치(EnemySpawner)에 가져다 놓는다
+	RandomSpawn() SelectSpawnObj()
+	확률을 뽑아서 만약 근접형이 나올 경우 원거리가 나올 경우  각각 그에 맞는 애로 생성한다
+
+3) BossSpawner
+-> 보스 소환
+
+	bossPrefabs
+
+	Spawn()
+
+4) EnemyManager
+-> 살아있는 객체 관리
+
+	aliveEnemys
+
+5)  SpawnComponent
+	enemyManager
+
+	Spawn()
+
+6) DeathComponent
+	enemyManager
+
+	Death()
+
+
+class, field, method <- 구조 설계 과정
+
+
+
+2. 아이템 루팅
+
+
+3. 하트 아이템
+
+
+4. 특수총 아이템
+
