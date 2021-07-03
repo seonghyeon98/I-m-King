@@ -13,32 +13,42 @@ using UnityEngine;
 //	EnemyWave() GetSpawnNum() 적의 생성 수를 관리한다
 //	SpawnBoss()
 
+//필드에 몬스터가 없으면 스폰.
+//재 생성할때 전보다 양이 늘어야함. -> 두배?
 
 
 public class SpawnerManager : MonoBehaviour
 {
-    [SerializeField] EnemySpwaner[] enmeySpawners;
-    [SerializeField] BossSpwaner bossSpawner;
-    int wave = 0;
+    [SerializeField] private EnemySpwaner[] enmeySpawners;
+    [SerializeField] private BossSpwaner bossSpawner;
+    
+    //웨이브
+    private int wave = 0;
+    
+
 
     // 매개변수 & 인자
     // 리턴(반환 타입)
 
-    void SpawnEnemy()
+
+    private void SpawnEnemy()
     {
-        //현수짱123
+        // 스포너들을 랜덤으로 골라준다.
+
+
+
     }
 
-  
 
-    int GetSpawnNum()
+
+    private int GetSpawnNum()
     {
         // 웨이브에 따라 생성량 결정
         //
         return 0;
     }
 
-    void SpawnBoss()
+    private void SpawnBoss()
     {
         // 보스 생성 명령
         bossSpawner.Spawn();

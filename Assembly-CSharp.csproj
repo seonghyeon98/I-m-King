@@ -58,25 +58,26 @@
   <ItemGroup>
     <Compile Include="Assets\Cho\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
+    <Compile Include="Assets\Ryu\Scripts\BossSpwaner.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Cho\Scripts\EnemyFSM.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Ryu\Scripts\Item.cs" />
+    <Compile Include="Assets\Ryu\Scripts\SpawnComponent.cs" />
+    <Compile Include="Assets\Ryu\Scripts\EnemySpwaner.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs" />
+    <Compile Include="Assets\Ryu\Scripts\SpawnerManager.cs" />
     <Compile Include="Assets\Ryu\3rdParty\QuarterView 3D Action BE5\ReadMe\Scripts\ReadmeBE5.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs" />
+    <Compile Include="Assets\gustnWkd123.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs" />
+    <Compile Include="Assets\Ryu\Scripts\DeathComponent.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
-    <Compile Include="Assets\Ryu\Scripts\SpawnComponent.cs" />
-    <Compile Include="Assets\Ryu\Scripts\EnemySpwaner.cs" />
-    <Compile Include="Assets\Ryu\Scripts\SpawnerManager.cs" />
-    <Compile Include="Assets\Ryu\Scripts\BossSpwaner.cs" />
     <Compile Include="Assets\Ryu\Scripts\EnemyManager.cs" />
-    <Compile Include="Assets\Ryu\Scripts\DeathComponent.cs" />
-    <Compile Include="Assets\gustnWkd123.cs" />
+    <Compile Include="Assets\Ryu\Scripts\tpghksWkd123.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Ryu\3rdParty\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
