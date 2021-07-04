@@ -9,7 +9,6 @@
 세번째, 해당 객체가 어느 정보를 알아야하는지
 
 
-
 1. 적 스폰
 적을 생성하고 싶다. 이게 핵심 요소
 1. 적(프리팹)을 맵에 생성한다
@@ -30,8 +29,8 @@ EnemySpawn
 
 	enemyspawners,BossSpawner,웨이브
 
-	RandomSpawnerPos() SpawnEnemy() 스포너들중 랜덤으로 골라준다
-	EnemyWave() GetSpawnNum() 적의 생성 수를 관리한다
+	SpawnEnemy() 스포너들중 랜덤으로 골라준다
+	GetSpawnNum() 적의 생성 수를 관리한다
 	SpawnBoss()
 
 2) EnemySpawner
@@ -41,8 +40,7 @@ EnemySpawn
 	enemyPrefabs
 
 	Spawn() 적을 자기 위치(EnemySpawner)에 가져다 놓는다
-	RandomSpawn() SelectSpawnObj()
-	확률을 뽑아서 만약 근접형이 나올 경우 원거리가 나올 경우  각각 그에 맞는 애로 생성한다
+	SelectSpawnObj() 확률을 뽑아서 만약 근접형이 나올 경우 원거리가 나올 경우  각각 그에 맞는 애로 생성한다
 
 3) BossSpawner
 -> 보스 소환
@@ -64,10 +62,46 @@ EnemySpawn
 6) DeathComponent
 	enemyManager
 
-	Death()
+	Death()나 20분만 시간을 줘 샤워하게 양치도 하고 싶어....
 
 
-class, field, method <- 구조 설계 과정
+
+Spawner
+
+f)
+	enemyPool
+
+m)
+	Spawn()
+	SelectSpawnObj()
+
+
+EnemySpawner : Spawner
+
+f)
+	enemys
+
+m)
+	SelectSpawnObj()
+
+
+BossSpawner : Spawner
+
+f)
+	boss
+
+m)
+	SelectSpawnObj()
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -78,4 +112,3 @@ class, field, method <- 구조 설계 과정
 
 
 4. 특수총 아이템
-

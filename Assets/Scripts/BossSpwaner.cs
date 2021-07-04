@@ -4,12 +4,12 @@ using UnityEngine;
 // 보스를 소환하고 싶다
 
 
-public class BossSpwaner : MonoBehaviour
+public class BossSpwaner : Spawner
 {
     [SerializeField] GameObject boss;
 
-    public void Spawn()
+    protected override GameObject SelectSpawnObj()
     {
-
+        return boss;
     }
 }
