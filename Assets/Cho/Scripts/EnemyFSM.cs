@@ -187,24 +187,14 @@ public class EnemyFSM : MonoBehaviour
         // 선형 보간을 이용하여 회전한다.
         transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
 
-        // 만약, 플레이어가 원거리 공격 범위 이내라면
-        if (Vector3.Distance(player.position, transform.position) <= attackRange)
+        // 매 딜레이마다 원거리 공격을 실행한다.
+        if (currentTime >= delayTime)
         {
-            // 매 딜레이마다 원거리 공격을 실행한다.
-            if (currentTime >= delayTime)
-            {
-                GameObject go = Instantiate(rangedAttack);
-                GameObject firePos = GameObject.Find("firePosition");
-                go.transform.position = firePos.transform.position;
+            GameObject go = Instantiate(rangedAttack);
+            GameObject firePos = GameObject.Find("firePosition");
+            go.transform.position = firePos.transform.position;
 
-                currentTime = 0;
-            }
-        }
-        // 공격 범위 밖이라면 
-        else
-        {
-            // 1.5초 뒤에 이동 상태로 전환한다.
-            Invoke("SetMoveState", 1.5f);
+            currentTime = 0;
         }
         // 공격 범위 밖이라면
         //else
