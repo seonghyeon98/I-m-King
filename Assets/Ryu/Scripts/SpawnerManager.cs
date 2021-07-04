@@ -35,7 +35,7 @@ public class SpawnerManager : MonoBehaviour
     {
 
         // 웨이브가 시작 되면 
-        if (wave)
+        if (wave == 0)
         {
 
         }
