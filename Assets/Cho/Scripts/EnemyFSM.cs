@@ -31,6 +31,8 @@ public class EnemyFSM : MonoBehaviour
     float rotSpeed = 0;
     float currentTime = 0;
     int hp = 0;
+    int h;
+    int v;
 
     void Start()
     {
@@ -187,15 +189,24 @@ public class EnemyFSM : MonoBehaviour
         // 선형 보간을 이용하여 회전한다.
         transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
 
-        // 매 딜레이마다 원거리 공격을 실행한다.
+        // h, v 의 크기에 따라 캐릭터가 이동한다.
+        Vector3 dir = new Vector3(h, 0, v);
+        dir.Normalize();
+
+        cc.Move(dir * moveSpeed * Time.deltaTime);
+
+        // 매 딜레이마다 원거리 공격을 실행한 뒤 h, v 값을 랜덤으로 설정해준다. 
         if (currentTime >= delayTime)
         {
             GameObject go = Instantiate(rangedAttack);
             GameObject firePos = GameObject.Find("firePosition");
             go.transform.position = firePos.transform.position;
 
+            EnemyRandomMove();
+
             currentTime = 0;
         }
+
         // 공격 범위 밖이라면
         //else
         //{
@@ -263,7 +274,14 @@ public class EnemyFSM : MonoBehaviour
 
     // 사망 상태 함수
     void Die()
-    { 
-    
+    {
+        Destroy(this.gameObject);
+    }
+
+    // 적 자동 이동 함수
+    void EnemyRandomMove()
+    {
+        h = Random.Range(-1, 2);
+        v = Random.Range(-1, 2);
     }
 }
