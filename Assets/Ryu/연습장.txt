@@ -62,7 +62,7 @@ EnemySpawn
 6) DeathComponent
 	enemyManager
 
-	Death()나 20분만 시간을 줘 샤워하게 양치도 하고 싶어....
+	Death()
 
 
 
@@ -95,14 +95,83 @@ m)
 
 
 
+플레이어 구현
+
+플레이어의 행동 전반을 구현하고 싶다.
+플레이어의 이동
+플레이어의 공격
+플레이어의 HP 
+불릿을 관리하는 스크립트가 필요하다
+
+
+PlayerMove
+플레이어가 사용자의 입력에 따라 입력한 방향으로 이동하고 싶다
+이동할 때 그 방향에 알맞게 회전하고 싶다
+만약 더 빠르게 달리고 싶을 때, 달리기를 하고 싶다.(예를 들어, LeftShift를 누르고 이동할 시 이동속도를 증가하고 싶다)
+
+f)
+	speed
+
+m)
+	Move()
+	LookAtMousePos()
+
+Bullet
+f)
+	obj
+	amount
+
+
+PlayerShooting
+f)
+	bullets
+	fireTr
+	attackSpeed
+
+m)
+	Shoot()
+	
+MovingForward
+앞으로 이동한다.
+
+f)
+	speed
+m)
+	MoveForward()
+
+CollisionAttack
+f) 
+	collisionTarget
+	attackDamage
+m)
+	OnCollisionAttack()
+
+CollisionDestroy
+m)
+	OnCollisionDestroy() 
+
+
+HPComponent
+
+플레이어와 적에게 HP를 만들어주고 싶다.
+각 상황(적의 공격에 피격당했을 때, 아이템을 통해 HP를 다시 회복할 때)에 맞게 HP를 관리해주고 싶다.
+만약 HP가 0 이하에 도달했을 시, 플레이어를 DIE 상태로 만들고, DISTROY한다.(더 나아가 나중에겠지만 HP가 0이 되었을 때 GAMEOVER한다.)
+
+f)
+	maxHP
+	currentHP
+
+m)
+	GetHP()
+	SetHP()
+	TakeDamage()
+	Heal()
+	Death()
 
 
 
 
-
-
-
-
+1. 아이템 드랍
 
 
 2. 아이템 루팅
@@ -112,3 +181,8 @@ m)
 
 
 4. 특수총 아이템
+
+
+
+HP 구현
+Attack 구현
