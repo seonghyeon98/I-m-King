@@ -25,7 +25,6 @@ public class tpghksWkd123 : MonoBehaviour
                 cubes.AddComponent<Rigidbody>();
                 cubes.GetComponent<Renderer>().material.color = Color.red;
                 print(i + "," + j);
-
             }
 
         }
