@@ -181,17 +181,17 @@ public class EnemyFSM : MonoBehaviour
 
             // 캐릭터 이동
             cc.Move(dir * moveSpeed * Time.deltaTime);
-
-            // 이동 방향을 바라보도록 회전한다.
-            Quaternion startRot = startRotation;
-            Quaternion endRot = Quaternion.LookRotation(player.position - transform.position);
-            rotSpeed += Time.deltaTime * 2f;
-
-            // 선형 보간을 이용하여 회전한다.
-            transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
         }
 
-        // 매 딜레이마다 원거리 공격을 실행한 뒤 h, v 값을 랜덤으로 설정해준다. 
+        // 이동 방향을 바라보도록 회전한다.
+        Quaternion startRot = startRotation;
+        Quaternion endRot = Quaternion.LookRotation(player.position - transform.position);
+        rotSpeed += Time.deltaTime * 2f;
+
+        // 선형 보간을 이용하여 회전한다.
+        transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
+
+        // 매 딜레이마다 원거리 공격을 실행한다. 
         if (currentTime >= delayTime)
         {
             GameObject go = Instantiate(rangedAttack);
