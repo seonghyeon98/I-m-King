@@ -11,5 +11,7 @@ public class BossSpwaner : Spawner
     protected override GameObject SelectSpawnObj()
     {
         return boss;
+        
+        
     }
 }

@@ -38,7 +38,7 @@ public class SpawnerManager : MonoBehaviour
     {
         wave += 1;
 
-        if(wave % 10 == 0)
+        if(wave % 5 == 0)
         {
             SpawnBoss();
         }
