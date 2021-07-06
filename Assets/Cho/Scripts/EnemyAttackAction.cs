@@ -22,4 +22,9 @@ public class EnemyAttackAction : MonoBehaviour
         //dir = transform.TransformDirection(dir);
         transform.position += dir * bulletSpeed * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        
+    }
 }
