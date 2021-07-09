@@ -173,9 +173,9 @@ MonoBehaviour:
   eState: 0
   sightRange: 70
   moveSpeed: 5
-  attackRange: 10
+  attackRange: 50
   delayTime: 2
-  rangedAttack: {fileID: 7103760371826647643, guid: bfc1fc6e136631643a66ef49945d1dde, type: 3}
+  rangedAttack: {fileID: 4096027743448194489, guid: 97c6ae4091be940469a55e0e926abf8e, type: 3}
 --- !u!143 &6748568189900778694
 CharacterController:
   m_ObjectHideFlags: 0

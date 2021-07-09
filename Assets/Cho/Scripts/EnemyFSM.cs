@@ -194,9 +194,9 @@ public class EnemyFSM : MonoBehaviour
         // 매 딜레이마다 원거리 공격을 실행한다. 
         if (currentTime >= delayTime)
         {
-            GameObject go = Instantiate(rangedAttack);
             GameObject firePos = GameObject.Find("firePosition");
-            go.transform.position = firePos.transform.position;
+            // 산탄 발사
+            Instantiate(rangedAttack, firePos.transform.position, firePos.transform.rotation);
 
             currentTime = 0;
         }
