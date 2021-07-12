@@ -21,6 +21,7 @@ public class EnemyAttackAction : MonoBehaviour
         rot = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
         moveDir = rot * Vector3.forward;
+        moveDir.Normalize();
     }
 
     void Update()
