@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MainScene/RyusehwanScene.unity
+    guid: 01558bf8c9ea2574bb2bbd74012b2cee
   m_configObjects: {}

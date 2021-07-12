@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1765987198}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: firePosition
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765987197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6748568189900778698}
@@ -42,9 +42,11 @@ GameObject:
   - component: {fileID: 6748568189900778697}
   - component: {fileID: 6748568189900778696}
   - component: {fileID: 6748568189900778699}
+  - component: {fileID: -3668001771486387145}
+  - component: {fileID: -1634001703013994202}
   - component: {fileID: 6748568189900778695}
   - component: {fileID: 6748568189900778694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RangedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 6748568189900778693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 1, z: 20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1765987198}
   m_Father: {fileID: 0}
@@ -129,6 +131,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3668001771486387145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748568189900778693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c480435861d23a4e8f63106f4465b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliveEnemyManager: {fileID: 0}
+--- !u!114 &-1634001703013994202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748568189900778693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531c24baaeff2b24780c33db27cb93f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 50
+  aliveEnemyManager: {fileID: 0}
 --- !u!114 &6748568189900778695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,12 +171,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eState: 0
-  sightRange: 10
-  moveSpeed: 2
-  attackRange: 9
+  sightRange: 70
+  moveSpeed: 5
+  attackRange: 50
   delayTime: 2
-  maxHP: 100
-  rangedAttack: {fileID: 7103760371826647643, guid: bfc1fc6e136631643a66ef49945d1dde, type: 3}
+  rangedAttack: {fileID: 4096027743448194489, guid: 97c6ae4091be940469a55e0e926abf8e, type: 3}
 --- !u!143 &6748568189900778694
 CharacterController:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] Bullet[] bullets;
     [SerializeField] Transform fireTr;
     [SerializeField] float shootDelay;
-    float currentTime = 0;
+    //float currentTime = 0;
 
     private void Start()
     {

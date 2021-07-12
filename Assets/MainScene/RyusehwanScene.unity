@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115113576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: 0, z: -40}
+  m_LocalPosition: {x: -40, y: 2.5, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -168,11 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &154195276
 GameObject:
@@ -294,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183460732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -40}
+  m_LocalPosition: {x: 0, y: 2.5, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -314,11 +312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &324739004
 GameObject:
@@ -448,7 +444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395573604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 0, z: -40}
+  m_LocalPosition: {x: 40, y: 2.5, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -468,11 +464,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &469053137
 GameObject:
@@ -499,7 +493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469053137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 0, z: 0}
+  m_LocalPosition: {x: 40, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -519,11 +513,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &501640927
 GameObject:
@@ -815,7 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989125a65c03ab4ebfae9d9ffbb902f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 30
 --- !u!114 &704863286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +824,7 @@ MonoBehaviour:
   - prefab: {fileID: 2061568574821932853, guid: ddf388405f1bc7f4d96b1286fbcd194c, type: 3}
     amount: 0
   fireTr: {fileID: 1026857829}
-  shootDelay: 0.2
+  shootDelay: 0.05
 --- !u!114 &704863287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919712270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 0, z: 40}
+  m_LocalPosition: {x: 40, y: 2.5, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -1031,11 +1023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &1026857828
 GameObject:
@@ -1405,7 +1395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208233491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: 0, z: 40}
+  m_LocalPosition: {x: -40, y: 2.5, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -1425,11 +1415,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!4 &1241057355 stripped
 Transform:
@@ -1461,7 +1449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608061349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: 0, z: 0}
+  m_LocalPosition: {x: -40, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -1481,11 +1469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &1627559747
 GameObject:
@@ -1857,7 +1843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989594813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 40}
+  m_LocalPosition: {x: 0, y: 2.5, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1708886302}
@@ -1877,11 +1863,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
   enemys:
-  - obj: {fileID: 328409505970683906, guid: 464cc7c4f7ea10b47a36d7848aa9ca9a, type: 3}
+  - obj: {fileID: 4984100734177901571, guid: 581999dcf35db8446b8bf39b6f6bee62, type: 3}
     prob: 1
-  - obj: {fileID: 9187343066701982198, guid: 4198e2587d1fcca4cb87c16c3cfed34d, type: 3}
-    prob: 8
-  - obj: {fileID: 3320669544841490502, guid: 06d503bba93001142b96e3510906db62, type: 3}
+  - obj: {fileID: 6748568189900778693, guid: fbb2e96877dd10749a5d5c6765401c26, type: 3}
     prob: 1
 --- !u!1 &2136428636
 GameObject:

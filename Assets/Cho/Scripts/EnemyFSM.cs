@@ -22,7 +22,6 @@ public class EnemyFSM : MonoBehaviour
     public float moveSpeed = 7.0f;
     public float attackRange = 2.0f;
     public float delayTime = 2.0f;
-    public int maxHP = 100;
     public GameObject rangedAttack;
 
     Transform player;
@@ -30,15 +29,9 @@ public class EnemyFSM : MonoBehaviour
     Quaternion startRotation;
     float rotSpeed = 0;
     float currentTime = 0;
-    int hp = 0;
-    int h;
-    int v;
 
     void Start()
     {
-        // 체력 정보 초기화
-        hp = maxHP;
-
         // 최초 상태는 대기 상태
         eState = EnemyState.Idle;
         eState = 0;
@@ -65,7 +58,6 @@ public class EnemyFSM : MonoBehaviour
                 RangedAttack();
                 break;
             case EnemyState.Damaged:
-                CheckClipTime();
                 break;
             case EnemyState.Die:
                 Die();
@@ -157,7 +149,7 @@ public class EnemyFSM : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        // 만약, 플레이어가 근접 공격 범위 이내라면
+        // 만약, 플레이어가 공격 범위 이내라면
         if (Vector3.Distance(player.position, transform.position) <= attackRange)
         {
             // 매 딜레이마다 타겟의 체력을 나의 공격력만큼 감소시킨다.
@@ -181,6 +173,16 @@ public class EnemyFSM : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
+        // 만약, 플레이어가 공격 범위 밖이라면
+        if (Vector3.Distance(player.position, transform.position) >= attackRange)
+        {
+            Vector3 dir = player.position - transform.position;
+            dir.Normalize();
+
+            // 캐릭터 이동
+            cc.Move(dir * moveSpeed * Time.deltaTime);
+        }
+
         // 이동 방향을 바라보도록 회전한다.
         Quaternion startRot = startRotation;
         Quaternion endRot = Quaternion.LookRotation(player.position - transform.position);
@@ -189,99 +191,20 @@ public class EnemyFSM : MonoBehaviour
         // 선형 보간을 이용하여 회전한다.
         transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
 
-        // h, v 의 크기에 따라 캐릭터가 이동한다.
-        Vector3 dir = new Vector3(h, 0, v);
-        dir.Normalize();
-
-        cc.Move(dir * moveSpeed * Time.deltaTime);
-
-        // 매 딜레이마다 원거리 공격을 실행한 뒤 h, v 값을 랜덤으로 설정해준다. 
+        // 매 딜레이마다 원거리 공격을 실행한다. 
         if (currentTime >= delayTime)
         {
-            GameObject go = Instantiate(rangedAttack);
             GameObject firePos = GameObject.Find("firePosition");
-            go.transform.position = firePos.transform.position;
-
-            EnemyRandomMove();
+            // 산탄 발사
+            Instantiate(rangedAttack, firePos.transform.position, firePos.transform.rotation);
 
             currentTime = 0;
         }
-
-        // 공격 범위 밖이라면
-        //else
-        //{
-        //    invoke("setmovestate", 1.5f);
-        //}
-    }
-
-    bool playMoveAni = false;
-    // 피격 처리 함수
-    public void Damaged(int val)
-    {
-        if (eState == EnemyState.Move)
-        {
-            playMoveAni = true;
-        }
-        else 
-        {
-            playMoveAni = false;
-        }
-
-        // val 값에 따라 체력이 감소된다.
-        hp = Mathf.Max(hp - val, 0);
-
-        // 만약, 체력이 0 이하면 Die 상태로 변경한다.
-        if (hp <= 0)
-        {
-            eState = EnemyState.Die;
-
-            // 사망 애니메이션 호출
-
-            // 캐릭터 컨트롤러와 캡슐 콜라이더를 전부 비활성화한다.
-            cc.enabled = false;
-            GetComponent<CapsuleCollider>().enabled = false;
-        }
-        // 그렇지 않으면, Damaged 상태로 변경한다.
-        else 
-        {
-            eState = EnemyState.Damaged;
-
-            // 피격 애니메이션 호출
-        }
-
-    }
-
-    // 피격 상태 함수
-    void CheckClipTime()
-    {
-        // 피격 애니메이션 클립의 총 길이를 구한다.
-
-        // 만약, 현재 상태의 이름이 "Move State" 라면
-        if (playMoveAni)
-        {
-
-        }
-        else
-        { 
-            // 이동 상태로 변경한다.
-        }
-    }
-    
-    void ReturnState()
-    {
-        eState = EnemyState.Move;
     }
 
     // 사망 상태 함수
     void Die()
     {
         Destroy(this.gameObject);
-    }
-
-    // 적 자동 이동 함수
-    void EnemyRandomMove()
-    {
-        h = Random.Range(-1, 2);
-        v = Random.Range(-1, 2);
     }
 }
