@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5466683860424431472}
   - component: {fileID: 8436610281607036903}
   - component: {fileID: 3547061612350078893}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RangedAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

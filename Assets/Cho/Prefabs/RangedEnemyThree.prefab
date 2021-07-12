@@ -176,7 +176,7 @@ MonoBehaviour:
   moveSpeed: 5
   attackRange: 50
   stopRange: 10
-  delayTime: 1.5
+  delayTime: 2
   rangedAttack: {fileID: 3820428610744238470, guid: 0daaa6267b79e2b4ea0da82e18b69e6f, type: 3}
 --- !u!143 &6748568189900778694
 CharacterController:
