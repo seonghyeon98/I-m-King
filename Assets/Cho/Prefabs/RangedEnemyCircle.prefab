@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 6748568189900778694}
   - component: {fileID: 5987170467053603302}
   m_Layer: 3
-  m_Name: RangedEnemyThree
+  m_Name: RangedEnemyCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72902f60fb2aadb47b9d899634d25d12, type: 2}
+  - {fileID: 2100000, guid: 3d72a8ec6659e9e48a074a327653e5d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,8 +176,8 @@ MonoBehaviour:
   moveSpeed: 5
   attackRange: 50
   stopRange: 10
-  delayTime: 1.5
-  rangedAttack: {fileID: 3820428610744238470, guid: 0daaa6267b79e2b4ea0da82e18b69e6f, type: 3}
+  delayTime: 2
+  rangedAttack: {fileID: 1088994511724238479, guid: f5c0d8bc2bb3b254db3849cfe35c54fb, type: 3}
 --- !u!143 &6748568189900778694
 CharacterController:
   m_ObjectHideFlags: 0
