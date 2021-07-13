@@ -128,6 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 50
   aliveEnemyManager: {fileID: 0}
+  items:
+  - {fileID: 3477434893718799959, guid: f8cbdd8f268d7db4788fecc0b1ab628d, type: 3}
 --- !u!114 &4984100734177901568
 MonoBehaviour:
   m_ObjectHideFlags: 0

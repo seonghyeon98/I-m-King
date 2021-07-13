@@ -6,6 +6,9 @@ public class DeathComponent : MonoBehaviour
 {
     [SerializeField] AliveEnemyManager aliveEnemyManager;
 
+
+
+
     void Awake()
     {
         aliveEnemyManager = GameObject.Find("EnemyManager").GetComponent<AliveEnemyManager>();
@@ -22,5 +25,7 @@ public class DeathComponent : MonoBehaviour
     {
         aliveEnemyManager.Remove(this.gameObject);
         Destroy(this.gameObject);
+
+
     }
 }

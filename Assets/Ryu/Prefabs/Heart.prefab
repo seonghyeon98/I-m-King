@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3463680750804057995}
   - component: {fileID: 3478286670825367232}
   - component: {fileID: 3478286670825367244}
+  - component: {fileID: -7060038876322271849}
+  - component: {fileID: 8721593036938115897}
+  - component: {fileID: -8946668981570024575}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -157,6 +160,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b38753e6b68bdc4989f827015e8f478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   speed: 1
   dis: 0.5
+--- !u!114 &-7060038876322271849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477434893718799959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738e5170b2bd98644831ccc7c71d7b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  heal: 10
+--- !u!114 &8721593036938115897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477434893718799959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28af1c81ba46a840b8fde9b4e6578b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionTargetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!65 &-8946668981570024575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477434893718799959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8154834, y: 0.3475596, z: 0.62949526}
+  m_Center: {x: -0.0068259835, y: 0.1600316, z: 0.0025842488}

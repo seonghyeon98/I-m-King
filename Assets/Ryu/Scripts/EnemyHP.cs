@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyHP : HPComponent
 {
     [SerializeField] AliveEnemyManager aliveEnemyManager;
+    // 죽을 때 떨굴 아이템 종류
+    [SerializeField] GameObject[] items;
 
     private new void Awake()
     {
@@ -13,7 +15,7 @@ public class EnemyHP : HPComponent
         aliveEnemyManager = GameObject.Find("EnemyManager").GetComponent<AliveEnemyManager>();
     }
 
-    protected override void TakeDamage()
+    protected override void TakeDamage(float delta)
     {
         // 피격 애니메이션
         // 사운드 호출
@@ -21,7 +23,7 @@ public class EnemyHP : HPComponent
         print(CurrentHP);
     }
 
-    protected override void Heal()
+    protected override void Heal(float delta)
     {
         // 회복 파티클
     }
@@ -31,5 +33,10 @@ public class EnemyHP : HPComponent
         print("Death");
         aliveEnemyManager.Remove(this.gameObject);
         Destroy(this.gameObject);
+        // 죽을 때 아이템 떨군다
+        GameObject item = Instantiate(items[0]);
+
+        // 3. 총구 위치에 가져다 놓고 싶다.
+        item.transform.position = transform.position;
     }
 }

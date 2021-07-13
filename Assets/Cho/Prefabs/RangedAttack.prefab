@@ -127,7 +127,7 @@ MonoBehaviour:
   attackDamage: 10
   collisionTargetLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
 --- !u!114 &8436610281607036903
 MonoBehaviour:
   m_ObjectHideFlags: 0
