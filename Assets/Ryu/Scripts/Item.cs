@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     //물체 움직임 속도
     public float speed = 1.0f;
 
-    Vector3 aaa;
+    Vector3 originPos;
     public float dis = 3;
 
     Vector3 dir;
@@ -22,7 +22,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        aaa = transform.position;
+        originPos = transform.position;
         dir = Vector3.up;
     }
 
@@ -40,19 +40,21 @@ public class Item : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
 
         // 일정 위치에 도달했는지 체크한다.
-        Vector3 temp0 =  aaa + dir * (dir.y > 0 ? dis :0);
-        if (dir.y > 0)
+
+        if (dir == Vector3.up)
         {
-            if (temp0.y <= transform.position.y)
+            float targetPosY = originPos.y + dis;
+            if (targetPosY <= transform.position.y)
                 dir = Vector3.down;
 
         }
         else
         {
-            if (temp0.y >= transform.position.y)
+            if (originPos.y >= transform.position.y)
                 dir = Vector3.up;
-
         }
+        
+        // transform.DoMoveY(transform.position.y + 100, 1).OnLoop(yoyo)
 
         /*
         if (isUP == true)

@@ -20,7 +20,11 @@ public class CollisionAttack : MonoBehaviour
         if ((LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) & collisionTargetLayer.value) != 0)
         {
             print($"{attackDamage}만큼 데미지를 입혔습니다.");
-            other.gameObject.GetComponent<HPComponent>().CurrentHP -= attackDamage;
+            HPComponent hpComponent = other.gameObject.GetComponent<HPComponent>();
+            if (hpComponent)
+            {
+                hpComponent.CurrentHP -= attackDamage;
+            }            
         }
     }
 }
