@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
@@ -21,14 +22,16 @@ public class EnemyFSM : MonoBehaviour
     public float sightRange = 10.0f;
     public float moveSpeed = 7.0f;
     public float attackRange = 2.0f;
+    public float stopRange = 5.0f;
     public float delayTime = 2.0f;
     public GameObject rangedAttack;
 
     Transform player;
-    CharacterController cc;
-    Quaternion startRotation;
-    float rotSpeed = 0;
+    //CharacterController cc;
+    //Quaternion startRotation;
+    //float rotSpeed = 0;
     float currentTime = 0;
+    NavMeshAgent smith;
 
     void Start()
     {
@@ -38,7 +41,13 @@ public class EnemyFSM : MonoBehaviour
 
         // Player 를 찾는다.
         player = GameObject.Find("Player").transform;
-        cc = GetComponent<CharacterController>();
+        //cc = GetComponent<CharacterController>();
+
+        // NavMeshAgent 컴포넌트를 가져온다.
+        smith = GetComponent<NavMeshAgent>();
+        smith.speed = moveSpeed;
+        smith.acceleration = 20.0f;
+        smith.stoppingDistance = stopRange;
     }
 
     void Update()
@@ -49,7 +58,7 @@ public class EnemyFSM : MonoBehaviour
                 Idle();
                 break;
             case EnemyState.Move:
-                Move();
+                Move2();
                 break;
             case EnemyState.MeleeAttack:
                 MeleeAttack();
@@ -92,56 +101,90 @@ public class EnemyFSM : MonoBehaviour
         // 이동 애니메이션 실행
 
         // 현재 회전 상태를 startRotation으로 저장한다.
-        startRotation = transform.rotation;
+        //startRotation = transform.rotation;
         // 회전 보간을 위한 rotRotate도 0으로 초기화한다.
-        rotSpeed = 0;
+        //rotSpeed = 0;
     }
 
     // 이동 상태 함수
-    void Move()
-    {
-        // 만약, 플레이어와의 거리가 공격 범위 이내로 접근했다면 공격 상태로 전환한다.
-        Vector3 dir = player.position - transform.position;
-        float distance = dir.magnitude;
+    //void Move()
+    //{
+    //    // 만약, 플레이어와의 거리가 공격 범위 이내로 접근했다면 공격 상태로 전환한다.
+    //    Vector3 dir = player.position - transform.position;
+    //    float distance = dir.magnitude;
 
-        // 근거리 유닛일 경우
+    //    // 근거리 유닛일 경우
+    //    if (this.name.Contains("Melee"))
+    //    {
+    //        if (distance <= attackRange)
+    //        {
+    //            eState = EnemyState.MeleeAttack;
+    //            currentTime = 0;
+
+    //            // 공격 애니메이션 실행
+
+    //            return;
+    //        }
+    //    }
+    //    // 원거리 유닛일 경우
+    //    else if (this.name.Contains("Ranged"))
+    //    {
+    //        if (distance <= attackRange)
+    //        {
+    //            eState = EnemyState.RangedAttack;
+    //            currentTime = 0;
+
+    //            // 공격 애니메이션 실행
+
+    //            return;
+    //        }
+    //    }
+
+    //    // 플레이어 방향으로 이동한다.
+    //    dir.Normalize();
+    //    cc.Move(dir * moveSpeed * Time.deltaTime);
+
+    //    // 이동 방향을 바라보도록 회전한다.
+    //    Quaternion startRot = startRotation;
+    //    Quaternion endRot = Quaternion.LookRotation(dir);
+    //    rotSpeed += Time.deltaTime * 2f;
+
+    //    // 선형 보간을 이용하여 회전한다.
+    //    transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
+    //}
+
+    void Move2()
+    {
+        smith.enabled = true;
+        // 플레이어의 위치를 NavMesh의 목적지로 설정한다.
+        smith.SetDestination(player.position);
+        smith.isStopped = false;
+
+        float dist = Vector3.Distance(player.position, transform.position);
+
         if (this.name.Contains("Melee"))
         {
-            if (distance <= attackRange)
+            if (dist <= attackRange)
             {
                 eState = EnemyState.MeleeAttack;
-                currentTime = 0;
 
                 // 공격 애니메이션 실행
 
-                return;
+                smith.isStopped = true;
             }
         }
-        // 원거리 유닛일 경우
-        else if (this.name.Contains("Ranged"))
+
+        if (this.name.Contains("Ranged"))
         {
-            if (distance <= attackRange)
+            if (dist <= attackRange)
             {
                 eState = EnemyState.RangedAttack;
-                currentTime = 0;
 
                 // 공격 애니메이션 실행
 
-                return;
+                smith.isStopped = true;
             }
         }
-
-        // 플레이어 방향으로 이동한다.
-        dir.Normalize();
-        cc.Move(dir * moveSpeed * Time.deltaTime);
-
-        // 이동 방향을 바라보도록 회전한다.
-        Quaternion startRot = startRotation;
-        Quaternion endRot = Quaternion.LookRotation(dir);
-        rotSpeed += Time.deltaTime * 2f;
-
-        // 선형 보간을 이용하여 회전한다.
-        transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
     }
 
     // 근접 공격 상태 함수
@@ -159,7 +202,7 @@ public class EnemyFSM : MonoBehaviour
             }
         }
         // 공격 범위 밖이라면
-        else 
+        else
         {
             // 1.5초 뒤에 이동 상태로 전환한다.
             Invoke("SetMoveState", 1.5f);
@@ -173,30 +216,24 @@ public class EnemyFSM : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        // 만약, 플레이어가 공격 범위 밖이라면
-        if (Vector3.Distance(player.position, transform.position) >= attackRange)
-        {
-            Vector3 dir = player.position - transform.position;
-            dir.Normalize();
+        Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);
 
-            // 캐릭터 이동
-            cc.Move(dir * moveSpeed * Time.deltaTime);
-        }
+        // 계속 플레이어를 쳐다본다.
+        transform.LookAt(targetPos);
 
-        // 이동 방향을 바라보도록 회전한다.
-        Quaternion startRot = startRotation;
-        Quaternion endRot = Quaternion.LookRotation(player.position - transform.position);
-        rotSpeed += Time.deltaTime * 2f;
-
-        // 선형 보간을 이용하여 회전한다.
-        transform.rotation = Quaternion.Lerp(startRot, endRot, rotSpeed);
+        smith.enabled = true;
+        // 플레이어의 위치를 NavMesh의 목적지로 설정한다.
+        smith.SetDestination(player.position);
+        smith.isStopped = false;
 
         // 매 딜레이마다 원거리 공격을 실행한다. 
         if (currentTime >= delayTime)
         {
-            GameObject firePos = GameObject.Find("firePosition");
-            // 산탄 발사
-            Instantiate(rangedAttack, firePos.transform.position, firePos.transform.rotation);
+            //GameObject firePos = GameObject.Find("firePosition");
+            Vector3 firePos = transform.GetChild(0).position;
+            Quaternion fireRot = transform.GetChild(0).rotation;
+            // 공격 실행
+            Instantiate(rangedAttack, firePos, fireRot);
 
             currentTime = 0;
         }

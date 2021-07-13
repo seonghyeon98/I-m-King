@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 6748568189900778694}
   - component: {fileID: 5987170467053603302}
   m_Layer: 3
-  m_Name: RangedEnemy
+  m_Name: RangedEnemyCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,8 +176,8 @@ MonoBehaviour:
   moveSpeed: 5
   attackRange: 50
   stopRange: 10
-  delayTime: 1
-  rangedAttack: {fileID: 7103760371826647643, guid: bfc1fc6e136631643a66ef49945d1dde, type: 3}
+  delayTime: 2
+  rangedAttack: {fileID: 1088994511724238479, guid: f5c0d8bc2bb3b254db3849cfe35c54fb, type: 3}
 --- !u!143 &6748568189900778694
 CharacterController:
   m_ObjectHideFlags: 0
