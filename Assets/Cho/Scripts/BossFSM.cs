@@ -119,7 +119,22 @@ public class BossFSM : MonoBehaviour
 
                 Vector3 fallPos = new Vector3(randomX, 5f, randomZ);
 
-                Instantiate(bossBoom, fallPos, Quaternion.identity);
+                GameObject go = Instantiate(bossBoom, fallPos, Quaternion.identity);
+
+                BoxCollider bc = go.GetComponent<BoxCollider>();
+                bc.enabled = false;
+
+                while (Physics.OverlapBox(bc.bounds.center, bc.size) != null)
+                {
+                    randomX = Random.Range(-40f, 41f);
+                    randomZ = Random.Range(-40f, 41f);
+
+                    fallPos = new Vector3(randomX, 5f, randomZ);
+
+                    go.transform.position = fallPos;
+                }
+
+                bc.enabled = true;
 
                 currentFireTime = 0;
             }
