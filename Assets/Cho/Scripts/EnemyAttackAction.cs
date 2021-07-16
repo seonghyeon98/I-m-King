@@ -11,15 +11,6 @@ public class EnemyAttackAction : MonoBehaviour
     Quaternion rot;
     Vector3 dir;
 
-    // 공격의 종류
-    public enum AttackType
-    {
-        EnemyAttack,
-        BossAttack
-    }
-
-    public AttackType attackType = AttackType.EnemyAttack;
-
     void Start()
     {
         //player = GameObject.Find("Player").transform;
@@ -27,19 +18,10 @@ public class EnemyAttackAction : MonoBehaviour
         //dir = player.position - transform.position;
         //dir.Normalize();
 
+        rot = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
-        if (attackType == AttackType.EnemyAttack)
-        {
-            rot = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-
-            dir = rot * Vector3.forward;
-            dir.Normalize();
-        }
-        else if (attackType == AttackType.BossAttack)
-        {
-            dir = transform.forward;
-            dir.Normalize();
-        }
+        dir = rot * Vector3.forward;
+        dir.Normalize();
     }
 
     void Update()

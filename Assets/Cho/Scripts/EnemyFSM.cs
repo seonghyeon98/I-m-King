@@ -26,7 +26,7 @@ public class EnemyFSM : MonoBehaviour
     public float delayTime = 2.0f;
     public float attackDamage = 10.0f;
     public GameObject rangedAttack;
-    public GameObject firePosition;
+    public Transform firePosition;
 
     Transform player;
     //CharacterController cc;
@@ -238,7 +238,7 @@ public class EnemyFSM : MonoBehaviour
         if (currentTime >= delayTime)
         {
             // 공격 실행
-            Instantiate(rangedAttack, firePosition.transform.position, firePosition.transform.rotation);
+            Instantiate(rangedAttack, firePosition.position, firePosition.rotation);
 
             currentTime = 0;
         }

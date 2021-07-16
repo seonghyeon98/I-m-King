@@ -180,7 +180,7 @@ MonoBehaviour:
   delayTime: 0.2
   attackDamage: 10
   rangedAttack: {fileID: 7103760371826647643, guid: bfc1fc6e136631643a66ef49945d1dde, type: 3}
-  firePosition: {fileID: 1765987197}
+  firePosition: {fileID: 1765987198}
 --- !u!195 &5987170467053603302
 NavMeshAgent:
   m_ObjectHideFlags: 0

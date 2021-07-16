@@ -1814,7 +1814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1126310891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1828,10 +1828,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossAttack: {fileID: 7103760371826647643, guid: 34d15786e9a3e964799e3193cb1bf267, type: 3}
+  bossBoom: {fileID: 5409421324455243622, guid: 3302b1341187fa34c9d4c8ecd6947d88, type: 3}
   fireDelay: 0.5
   moveSpeed: 7
   patternTime: 2
   stopRange: 15
+  firePosition: {fileID: 82591353}
+  bossState: 0
 --- !u!65 &1126310892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2418,7 +2421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1919485018
 MonoBehaviour:
   m_ObjectHideFlags: 0
