@@ -1834,7 +1834,6 @@ MonoBehaviour:
   patternTime: 2
   stopRange: 15
   firePosition: {fileID: 82591353}
-  bossState: 0
 --- !u!65 &1126310892
 BoxCollider:
   m_ObjectHideFlags: 0

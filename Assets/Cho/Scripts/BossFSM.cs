@@ -16,6 +16,8 @@ public class BossFSM : MonoBehaviour
     Transform player;
     float currentFireTime;
     float currentPatternTime;
+    bool isStart = true;
+
 
     NavMeshAgent smith;
 
@@ -52,10 +54,10 @@ public class BossFSM : MonoBehaviour
             case BossState.Idle:
                 break;
             case BossState.Pattern1:
-                Pattern1();
+                StartPattern1();
                 break;
             case BossState.Pattern2:
-                Pattern2();
+                StartPattern2();
                 break;
             case BossState.Pattern3:
                 break;
@@ -85,10 +87,9 @@ public class BossFSM : MonoBehaviour
             // 딜레이 마다 여러 갈래로 공격한다.
             if (currentFireTime >= fireDelay)
             {
-                // 랜덤 값 생성
                 float random = Random.Range(-10f, 11);
 
-                // firePostion의 Y각도에 랜덤 값 대입
+                // firePostion의 각도에 랜덤 값 대입
                 firePosition.localEulerAngles = new Vector3(0, random, 0);
 
                 Instantiate(bossAttack, firePosition.position, firePosition.rotation);
@@ -103,7 +104,22 @@ public class BossFSM : MonoBehaviour
         }
     }
 
-    // 패턴 2) 랜덤 위치에 폭탄을 떨어뜨리고 싶다.
+    void StartPattern1()
+    {
+        if (isStart)
+        {
+            // 변수 초기화
+            currentFireTime = 0;
+            currentPatternTime = 0;
+
+            isStart = false;
+        }
+
+        Pattern1();
+    }
+
+
+    // 패턴 2) 랜덤 위치에 폭탄을 생성시키고 싶다.
     void Pattern2()
     {
         currentFireTime += Time.deltaTime;
@@ -113,28 +129,13 @@ public class BossFSM : MonoBehaviour
         {
             if (currentFireTime >= fireDelay)
             {
-                // 랜덤으로 X, Z 값 생성
+                // X, Z 값에 랜덤 대입
                 float randomX = Random.Range(-40f, 41f);
                 float randomZ = Random.Range(-40f, 41f);
 
                 Vector3 fallPos = new Vector3(randomX, 5f, randomZ);
 
-                GameObject go = Instantiate(bossBoom, fallPos, Quaternion.identity);
-
-                BoxCollider bc = go.GetComponent<BoxCollider>();
-                bc.enabled = false;
-
-                while (Physics.OverlapBox(bc.bounds.center, bc.size) != null)
-                {
-                    randomX = Random.Range(-40f, 41f);
-                    randomZ = Random.Range(-40f, 41f);
-
-                    fallPos = new Vector3(randomX, 5f, randomZ);
-
-                    go.transform.position = fallPos;
-                }
-
-                bc.enabled = true;
+                Instantiate(bossBoom, fallPos, Quaternion.identity);
 
                 currentFireTime = 0;
             }
@@ -143,5 +144,19 @@ public class BossFSM : MonoBehaviour
         {
             currentPatternTime = 0;
         }
+    }
+
+    void StartPattern2()
+    {
+        if (isStart)
+        {
+            // 변수 초기화
+            currentFireTime = 0;
+            currentPatternTime = 0;
+
+            isStart = false;
+        }
+
+        Pattern2();
     }
 }
