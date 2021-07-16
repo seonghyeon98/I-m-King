@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8436610281607036903}
   - component: {fileID: 3547061612350078893}
   m_Layer: 6
-  m_Name: RangedAttack
+  m_Name: BossAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 30
-  attackType: 0
+  attackType: 1
 --- !u!114 &-5466683860424431472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   attackDamage: 10
   collisionTargetLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 129
 --- !u!114 &8436610281607036903
 MonoBehaviour:
   m_ObjectHideFlags: 0

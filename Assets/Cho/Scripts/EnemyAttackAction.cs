@@ -6,22 +6,40 @@ public class EnemyAttackAction : MonoBehaviour
 {
     public float bulletSpeed = 5.0f;
 
-    Transform player;
+    //Transform player;
     //Vector3 dir;
     Quaternion rot;
-    Vector3 moveDir;
+    Vector3 dir;
+
+    // 공격의 종류
+    public enum AttackType
+    {
+        EnemyAttack,
+        BossAttack
+    }
+
+    public AttackType attackType = AttackType.EnemyAttack;
 
     void Start()
     {
-        player = GameObject.Find("Player").transform;
+        //player = GameObject.Find("Player").transform;
 
         //dir = player.position - transform.position;
         //dir.Normalize();
 
-        rot = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
-        moveDir = rot * Vector3.forward;
-        moveDir.Normalize();
+        if (attackType == AttackType.EnemyAttack)
+        {
+            rot = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+
+            dir = rot * Vector3.forward;
+            dir.Normalize();
+        }
+        else if (attackType == AttackType.BossAttack)
+        {
+            dir = transform.forward;
+            dir.Normalize();
+        }
     }
 
     void Update()
@@ -29,6 +47,6 @@ public class EnemyAttackAction : MonoBehaviour
         //dir = transform.TransformDirection(dir);
         //transform.position += dir * bulletSpeed * Time.deltaTime;
 
-        transform.position += moveDir * bulletSpeed * Time.deltaTime;
+        transform.position += dir * bulletSpeed * Time.deltaTime;
     }
 }

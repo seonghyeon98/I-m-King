@@ -24,7 +24,9 @@ public class EnemyFSM : MonoBehaviour
     public float attackRange = 2.0f;
     public float stopRange = 5.0f;
     public float delayTime = 2.0f;
+    public float attackDamage = 10.0f;
     public GameObject rangedAttack;
+    public GameObject firePosition;
 
     Transform player;
     //CharacterController cc;
@@ -52,27 +54,30 @@ public class EnemyFSM : MonoBehaviour
 
     void Update()
     {
-        switch (eState)
+        if (player != null)
         {
-            case EnemyState.Idle:
-                Idle();
-                break;
-            case EnemyState.Move:
-                Move2();
-                break;
-            case EnemyState.MeleeAttack:
-                MeleeAttack();
-                break;
-            case EnemyState.RangedAttack:
-                RangedAttack();
-                break;
-            case EnemyState.Damaged:
-                break;
-            case EnemyState.Die:
-                Die();
-                break;
-            default:
-                break;
+            switch (eState)
+            {
+                case EnemyState.Idle:
+                    Idle();
+                    break;
+                case EnemyState.Move:
+                    Move2();
+                    break;
+                case EnemyState.MeleeAttack:
+                    MeleeAttack();
+                    break;
+                case EnemyState.RangedAttack:
+                    RangedAttack();
+                    break;
+                case EnemyState.Damaged:
+                    break;
+                case EnemyState.Die:
+                    Die();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -182,7 +187,6 @@ public class EnemyFSM : MonoBehaviour
 
                 // 공격 애니메이션 실행
 
-                smith.isStopped = true;
             }
         }
     }
@@ -198,6 +202,11 @@ public class EnemyFSM : MonoBehaviour
             // 매 딜레이마다 타겟의 체력을 나의 공격력만큼 감소시킨다.
             if (currentTime >= delayTime)
             {
+                HPComponent hpComponent = player.GetComponent<HPComponent>();
+                if (hpComponent)
+                {
+                    hpComponent.CurrentHP -= attackDamage;
+                }
                 currentTime = 0;
             }
         }
@@ -224,16 +233,12 @@ public class EnemyFSM : MonoBehaviour
         smith.enabled = true;
         // 플레이어의 위치를 NavMesh의 목적지로 설정한다.
         smith.SetDestination(player.position);
-        smith.isStopped = false;
 
         // 매 딜레이마다 원거리 공격을 실행한다. 
         if (currentTime >= delayTime)
         {
-            //GameObject firePos = GameObject.Find("firePosition");
-            Vector3 firePos = transform.GetChild(0).position;
-            Quaternion fireRot = transform.GetChild(0).rotation;
             // 공격 실행
-            Instantiate(rangedAttack, firePos, fireRot);
+            Instantiate(rangedAttack, firePosition.transform.position, firePosition.transform.rotation);
 
             currentTime = 0;
         }
