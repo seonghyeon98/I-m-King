@@ -7,6 +7,8 @@ public class BossFSM : MonoBehaviour
 {
     public GameObject bossAttack;
     public GameObject bossBoom;
+    public GameObject boomEffect;
+    public GameObject bossCircleAttack;
     public float fireDelay = 0.5f;
     public float moveSpeed = 7f;
     public float patternTime = 2f;
@@ -60,6 +62,7 @@ public class BossFSM : MonoBehaviour
                 StartPattern2();
                 break;
             case BossState.Pattern3:
+                StartPattern3();
                 break;
             default:
                 break;
@@ -100,6 +103,8 @@ public class BossFSM : MonoBehaviour
         // 커지면 다른 패턴을 실행한다.
         else
         {
+            firePosition.localEulerAngles = new Vector3(0, 0, 0);
+
             currentPatternTime = 0;
         }
     }
@@ -129,13 +134,8 @@ public class BossFSM : MonoBehaviour
         {
             if (currentFireTime >= fireDelay)
             {
-                // X, Z 값에 랜덤 대입
-                float randomX = Random.Range(-40f, 41f);
-                float randomZ = Random.Range(-40f, 41f);
-
-                Vector3 fallPos = new Vector3(randomX, 5f, randomZ);
-
-                Instantiate(bossBoom, fallPos, Quaternion.identity);
+                // 폭탄 생성
+                StartCoroutine(BoomCreate());
 
                 currentFireTime = 0;
             }
@@ -158,5 +158,62 @@ public class BossFSM : MonoBehaviour
         }
 
         Pattern2();
+    }
+
+    // 패턴 3) 플레이어를 바라보고 가만히 서서 patternTime 동안 원형으로 공격을 하고 싶다.
+    void Pattern3()
+    {
+        currentFireTime += Time.deltaTime;
+        currentPatternTime += Time.deltaTime;
+
+        Vector3 targetPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+
+        // 계속 플레이어를 쳐다본다.
+        transform.LookAt(targetPos);
+
+        if (currentPatternTime <= patternTime)
+        {
+            if (currentFireTime >= fireDelay)
+            {
+                Instantiate(bossCircleAttack, firePosition.position, firePosition.rotation);
+
+                currentFireTime = 0;
+            }
+        }
+        else
+        {
+            currentPatternTime = 0;
+        }
+    }
+
+    void StartPattern3()
+    {
+        if (isStart)
+        {
+            // 변수 초기화
+            currentFireTime = 0;
+            currentPatternTime = 0;
+
+            isStart = false;
+        }
+
+        Pattern3();
+    }
+
+    // 폭탄 생성 코루틴
+    IEnumerator BoomCreate()
+    {
+        // X, Z 값에 랜덤 대입
+        float randomX = Random.Range(-40f, 41f);
+        float randomZ = Random.Range(-40f, 41f);
+
+        Vector3 fallPos = new Vector3(randomX, 2.5f, randomZ);
+
+        // 효과 생성
+        GameObject go = Instantiate(boomEffect, fallPos, Quaternion.identity);
+
+        // 효과 생성 후 1초 뒤에 폭탄 생성
+        yield return new WaitForSeconds(1f);
+        Instantiate(bossBoom, go.transform.position, Quaternion.identity);
     }
 }

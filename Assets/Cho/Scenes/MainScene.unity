@@ -1827,13 +1827,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03d1dd77285a68438877f1298b3b739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossAttack: {fileID: 7103760371826647643, guid: 34d15786e9a3e964799e3193cb1bf267, type: 3}
+  bossAttack: {fileID: 7103760371826647643, guid: bfc1fc6e136631643a66ef49945d1dde, type: 3}
   bossBoom: {fileID: 5409421324455243622, guid: 3302b1341187fa34c9d4c8ecd6947d88, type: 3}
+  boomEffect: {fileID: 9217952076545139633, guid: 9653e62ed50047941b98e219895588ae, type: 3}
+  bossCircleAttack: {fileID: 1088994511724238479, guid: f5c0d8bc2bb3b254db3849cfe35c54fb, type: 3}
   fireDelay: 0.5
   moveSpeed: 7
   patternTime: 2
   stopRange: 15
   firePosition: {fileID: 82591353}
+  bossState: 0
 --- !u!65 &1126310892
 BoxCollider:
   m_ObjectHideFlags: 0
