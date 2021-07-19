@@ -1,3 +1,4 @@
+using JHS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] Bullet[] bullets;
     [SerializeField] Transform fireTr;
     [SerializeField] float shootDelay;
+    [SerializeField] AudioClip shootSound;
     //float currentTime = 0;
 
     private void Start()
@@ -50,5 +52,7 @@ public class PlayerShooting : MonoBehaviour
         // 3. 총구 위치에 가져다 놓고 싶다.
         bullet.transform.position = fireTr.transform.position;
         bullet.transform.forward = transform.forward;
+
+        SoundSystem.Instance.PlaySoundEffect(shootSound);
     }
 }

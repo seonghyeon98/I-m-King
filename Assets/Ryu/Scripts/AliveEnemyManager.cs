@@ -18,7 +18,7 @@ public class AliveEnemyManager : MonoBehaviour
 
         if (AliveCount() == 0)
         {
-            spawnerManager.Spawn();
+            spawnerManager.Spawn(); 
         }
     }
 

@@ -31,13 +31,13 @@ public class PlayerMove : MonoBehaviour
     {
         LookAtMousePos();
 
-        Vector3 dir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        dir = transform.TransformDirection(dir.normalized);
+        Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        Vector3 localDir = transform.TransformDirection(moveDir);
 
-        animator.SetFloat("VerticalMove", Input.GetAxisRaw("Vertical"));
-        animator.SetFloat("HorizontalMove", Input.GetAxisRaw("Horizontal"));
+        animator.SetFloat("VerticalMove", localDir.z);
+        animator.SetFloat("HorizontalMove", localDir.x);
 
-        charactorController.Move(dir * speed * Time.deltaTime);
+        charactorController.Move(moveDir * speed * Time.deltaTime);
     }
 
     void LookAtMousePos()

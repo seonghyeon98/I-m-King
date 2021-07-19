@@ -13,7 +13,7 @@ using UnityEngine;
 //	EnemyWave() GetSpawnNum() 적의 생성 수를 관리한다
 //	SpawnBoss()
 
-//필드에 몬스터가 없으면 스폰.
+//필드에 몬스터가 없으면 스폰. 스폰할 때 딜레이 주기,  스폰할 때 파티클 넣어주기
 //재 생성할때 전보다 양이 늘어야함. -> 두배?
 
 
@@ -36,7 +36,14 @@ public class SpawnerManager : MonoBehaviour
 
     public void Spawn()
     {
+        StartCoroutine(Co_Spawn());
+    }
+
+    private IEnumerator Co_Spawn()
+    {
         wave += 1;
+
+        yield return new WaitForSeconds(1);
 
         if(wave % 5 == 0)
         {
