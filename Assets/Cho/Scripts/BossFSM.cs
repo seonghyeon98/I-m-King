@@ -19,14 +19,13 @@ public class BossFSM : MonoBehaviour
     float currentFireTime;
     float currentPatternTime;
     bool isStart = true;
-
+    int patternRandom;
 
     NavMeshAgent smith;
 
     // 보스 패턴 열거 상수
     public enum BossState
     {
-        Idle,
         Pattern1,
         Pattern2,
         Pattern3
@@ -36,8 +35,8 @@ public class BossFSM : MonoBehaviour
 
     void Start()
     {
-        // 기본 상태는 대기 상태
-        bossState = BossState.Idle;
+        // 기본 상태는 패턴 1 상태
+        bossState = BossState.Pattern1;
 
         // 플레이어의 위치 찾기
         player = GameObject.Find("Player").transform;
@@ -53,8 +52,6 @@ public class BossFSM : MonoBehaviour
     {
         switch (bossState)
         {
-            case BossState.Idle:
-                break;
             case BossState.Pattern1:
                 StartPattern1();
                 break;
@@ -104,8 +101,17 @@ public class BossFSM : MonoBehaviour
         else
         {
             firePosition.localEulerAngles = new Vector3(0, 0, 0);
-
+            patternRandom = Random.Range(0, 3);
             currentPatternTime = 0;
+
+            if (patternRandom == 0)
+            {
+                patternRandom = Random.Range(0, 3); 
+            }
+            else
+            {
+                bossState = (BossState)(patternRandom);
+            }
         }
     }
 
@@ -142,7 +148,17 @@ public class BossFSM : MonoBehaviour
         }
         else
         {
+            patternRandom = Random.Range(0, 3);
             currentPatternTime = 0;
+
+            if (patternRandom == 1)
+            {
+                patternRandom = Random.Range(0, 3);
+            }
+            else
+            {
+                bossState = (BossState)(patternRandom);
+            }
         }
     }
 
@@ -182,7 +198,17 @@ public class BossFSM : MonoBehaviour
         }
         else
         {
+            patternRandom = Random.Range(0, 3);
             currentPatternTime = 0;
+
+            if (patternRandom == 2)
+            {
+                patternRandom = Random.Range(0, 3);
+            }
+            else
+            {
+                bossState = (BossState)(patternRandom);
+            }
         }
     }
 
