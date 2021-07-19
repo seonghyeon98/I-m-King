@@ -35,6 +35,14 @@ public class EnemyFSM : MonoBehaviour
     float currentTime = 0;
     NavMeshAgent smith;
 
+    [SerializeField] Animator animator;
+
+    [SerializeField] float AttackAnimDelay;
+
+    private void Awake()
+    {
+        animator.SetFloat("AttackSpeed", 1/AttackAnimDelay);
+    }
     void Start()
     {
         // 최초 상태는 대기 상태
@@ -79,6 +87,8 @@ public class EnemyFSM : MonoBehaviour
                     break;
             }
         }
+
+        animator.SetFloat("Speed", Mathf.Clamp01(smith.velocity.magnitude));
     }
 
     // 대기 상태 함수
@@ -202,12 +212,13 @@ public class EnemyFSM : MonoBehaviour
             // 매 딜레이마다 타겟의 체력을 나의 공격력만큼 감소시킨다.
             if (currentTime >= delayTime)
             {
-                HPComponent hpComponent = player.GetComponent<HPComponent>();
-                if (hpComponent)
+                bool isAnimationExit = !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+
+                // 여기서 공격 애니에션 실행
+                if (isAnimationExit)
                 {
-                    hpComponent.CurrentHP -= attackDamage;
-                }
-                currentTime = 0;
+                    animator.SetTrigger("DoAttack");
+                }                
             }
         }
         // 공격 범위 밖이라면
@@ -218,6 +229,15 @@ public class EnemyFSM : MonoBehaviour
 
             eState = EnemyState.AttackToMove;
         }
+    }
+    public void OnMeleeAttack()
+    {
+        HPComponent hpComponent = player.GetComponent<HPComponent>();
+        if (hpComponent)
+        {
+            hpComponent.CurrentHP -= attackDamage;
+        }
+        currentTime = 0;
     }
 
     // 원거리 공격 상태 함수
@@ -237,11 +257,22 @@ public class EnemyFSM : MonoBehaviour
         // 매 딜레이마다 원거리 공격을 실행한다. 
         if (currentTime >= delayTime)
         {
-            // 공격 실행
-            Instantiate(rangedAttack, firePosition.position, firePosition.rotation);
+            bool isAnimationExit = !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
 
-            currentTime = 0;
+            // 여기서 공격 애니에션 실행
+            if (isAnimationExit)
+            {
+                animator.SetTrigger("DoAttack");
+            }            
         }
+    }
+
+    public void OnRangeAttack()
+    {
+        // 공격 실행
+        Instantiate(rangedAttack, firePosition.position, firePosition.rotation);
+
+        currentTime = 0;
     }
 
     // 사망 상태 함수

@@ -30,6 +30,18 @@ Transform:
   m_Father: {fileID: 779607869845129267}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760518642325391179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779607869844641081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d504e1f42a01b6848a660febac3a459e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6748568189900778693
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +121,7 @@ MonoBehaviour:
   aliveEnemyManager: {fileID: 0}
   items:
   - {fileID: 3477434893718799959, guid: f8cbdd8f268d7db4788fecc0b1ab628d, type: 3}
+  animator: {fileID: 779607869852034803}
 --- !u!114 &6748568189900778695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +143,8 @@ MonoBehaviour:
   attackDamage: 10
   rangedAttack: {fileID: 3820428610744238470, guid: 0daaa6267b79e2b4ea0da82e18b69e6f, type: 3}
   firePosition: {fileID: 1765987198}
+  animator: {fileID: 779607869852034803}
+  AttackAnimDelay: 1.5
 --- !u!195 &5987170467053603302
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -219,11 +234,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake Naga
       objectReference: {fileID: 0}
+    - target: {fileID: 5366632779156957716, guid: fdacaae60b920e24fa18970e6f402660, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: d6ac560f441a58a448990fd006cf9047, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdacaae60b920e24fa18970e6f402660, type: 3}
+--- !u!1 &779607869844641081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5366632779147598302, guid: fdacaae60b920e24fa18970e6f402660, type: 3}
+  m_PrefabInstance: {fileID: 4659999856889105639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &779607869845129497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5366632779147167230, guid: fdacaae60b920e24fa18970e6f402660, type: 3}
+  m_PrefabInstance: {fileID: 4659999856889105639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &779607869852034803 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5366632779156957716, guid: fdacaae60b920e24fa18970e6f402660, type: 3}
   m_PrefabInstance: {fileID: 4659999856889105639}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &779607869845129267 stripped

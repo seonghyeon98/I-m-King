@@ -1428,7 +1428,7 @@ MonoBehaviour:
   - prefab: {fileID: 2061568574821932853, guid: ddf388405f1bc7f4d96b1286fbcd194c, type: 3}
     amount: 0
   fireTr: {fileID: 1026857829}
-  shootDelay: 0.05
+  shootDelay: 0.25
   shootSound: {fileID: 8300000, guid: 5fad4b6fba7178140966ae2d46b59e49, type: 3}
 --- !u!114 &704863287
 MonoBehaviour:

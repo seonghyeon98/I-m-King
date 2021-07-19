@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4366030885139417271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3799752668864754072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d504e1f42a01b6848a660febac3a459e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4984100734177901571
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +91,7 @@ MonoBehaviour:
   aliveEnemyManager: {fileID: 0}
   items:
   - {fileID: 3477434893718799959, guid: f8cbdd8f268d7db4788fecc0b1ab628d, type: 3}
+  animator: {fileID: 3799752668874261074}
 --- !u!114 &4984100734177901568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +113,8 @@ MonoBehaviour:
   attackDamage: 10
   rangedAttack: {fileID: 7103760371826647643, guid: bfc1fc6e136631643a66ef49945d1dde, type: 3}
   firePosition: {fileID: 0}
+  animator: {fileID: 3799752668874261074}
+  AttackAnimDelay: 1
 --- !u!195 &8660104757519308900
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -129,6 +144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4984100734177901580}
     m_Modifications:
+    - target: {fileID: 5520583845739368515, guid: 94dd2061678f8a94caf477d694a3e473, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ebc40638ee0c2c4478bccf85fbcb320b, type: 2}
     - target: {fileID: 5520583845748473769, guid: 94dd2061678f8a94caf477d694a3e473, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -191,8 +210,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94dd2061678f8a94caf477d694a3e473, type: 3}
+--- !u!1 &3799752668864754072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5520583845748892553, guid: 94dd2061678f8a94caf477d694a3e473, type: 3}
+  m_PrefabInstance: {fileID: 8657716364508254737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3799752668864392632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5520583845748473769, guid: 94dd2061678f8a94caf477d694a3e473, type: 3}
+  m_PrefabInstance: {fileID: 8657716364508254737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3799752668874261074 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5520583845739368515, guid: 94dd2061678f8a94caf477d694a3e473, type: 3}
   m_PrefabInstance: {fileID: 8657716364508254737}
   m_PrefabAsset: {fileID: 0}
