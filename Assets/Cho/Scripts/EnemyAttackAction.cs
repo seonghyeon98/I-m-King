@@ -11,6 +11,8 @@ public class EnemyAttackAction : MonoBehaviour
     Quaternion rot;
     Vector3 dir;
 
+    [SerializeField] Rigidbody rigidbody;
+
     void Start()
     {
         //player = GameObject.Find("Player").transform;
@@ -29,6 +31,6 @@ public class EnemyAttackAction : MonoBehaviour
         //dir = transform.TransformDirection(dir);
         //transform.position += dir * bulletSpeed * Time.deltaTime;
 
-        transform.position += dir * bulletSpeed * Time.deltaTime;
+        rigidbody.velocity = dir * bulletSpeed;
     }
 }

@@ -17,6 +17,7 @@ public class CollisionAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("충돌");
         if ((LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) & collisionTargetLayer.value) != 0)
         {
             print($"{attackDamage}만큼 데미지를 입혔습니다.");
@@ -25,6 +26,19 @@ public class CollisionAttack : MonoBehaviour
             {
                 hpComponent.CurrentHP -= attackDamage;
             }            
+        }
+    }
+
+    public void Attack(Collider other)
+    {
+        if ((LayerMask.GetMask(LayerMask.LayerToName(other.gameObject.layer)) & collisionTargetLayer.value) != 0)
+        {
+            print($"{attackDamage}만큼 데미지를 입혔습니다.");
+            HPComponent hpComponent = other.gameObject.GetComponent<HPComponent>();
+            if (hpComponent)
+            {
+                hpComponent.CurrentHP -= attackDamage;
+            }
         }
     }
 }

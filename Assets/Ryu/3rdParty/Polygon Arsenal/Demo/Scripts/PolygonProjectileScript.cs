@@ -5,6 +5,8 @@ namespace PolygonArsenal
 {
     public class PolygonProjectileScript : MonoBehaviour
     {
+        [SerializeField] LayerMask collisionTargetLayer;
+
         public GameObject impactParticle;
         public GameObject projectileParticle;
         public GameObject muzzleParticle;
@@ -44,36 +46,41 @@ namespace PolygonArsenal
 
             if (Physics.SphereCast(transform.position, rad, dir, out hit, dist))
             {
-                transform.position = hit.point + (hit.normal * collideOffset);
-
-                GameObject impactP = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
-
-                if (hit.transform.tag == "Destructible") // Projectile will destroy objects tagged as Destructible
+                if ((LayerMask.GetMask(LayerMask.LayerToName(hit.transform.gameObject.layer)) & collisionTargetLayer.value) != 0)
                 {
-                    Destroy(hit.transform.gameObject);
-                }
+                    transform.position = hit.point + (hit.normal * collideOffset);
 
-                foreach (GameObject trail in trailParticles)
-                {
-                    GameObject curTrail = transform.Find(projectileParticle.name + "/" + trail.name).gameObject;
-                    curTrail.transform.parent = null;
-                    Destroy(curTrail, 3f);
-                }
-                Destroy(projectileParticle, 3f);
-                Destroy(impactP, 5.0f);
-                Destroy(gameObject);
+                    GameObject impactP = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
 
-                ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>();
-                //Component at [0] is that of the parent i.e. this object (if there is any)
-                for (int i = 1; i < trails.Length; i++)
-                {
-
-                    ParticleSystem trail = trails[i];
-
-                    if (trail.gameObject.name.Contains("Trail"))
+                    if (hit.transform.tag == "Destructible") // Projectile will destroy objects tagged as Destructible
                     {
-                        trail.transform.SetParent(null);
-                        Destroy(trail.gameObject, 2f);
+                        Destroy(hit.transform.gameObject);
+                    }
+
+                    foreach (GameObject trail in trailParticles)
+                    {
+                        GameObject curTrail = transform.Find(projectileParticle.name + "/" + trail.name).gameObject;
+                        curTrail.transform.parent = null;
+                        Destroy(curTrail, 3f);
+                    }
+                    Destroy(projectileParticle, 3f);
+                    Destroy(impactP, 5.0f);
+                    Destroy(transform.parent.gameObject);
+
+                    transform.parent.GetComponent<CollisionAttack>().Attack(hit.collider);
+
+                    ParticleSystem[] trails = GetComponentsInChildren<ParticleSystem>();
+                    //Component at [0] is that of the parent i.e. this object (if there is any)
+                    for (int i = 1; i < trails.Length; i++)
+                    {
+
+                        ParticleSystem trail = trails[i];
+
+                        if (trail.gameObject.name.Contains("Trail"))
+                        {
+                            trail.transform.SetParent(null);
+                            Destroy(trail.gameObject, 2f);
+                        }
                     }
                 }
             }
