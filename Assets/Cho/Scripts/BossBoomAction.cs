@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossBoomAction : MonoBehaviour
 {
     public float attackDamage = 10f;
+    public GameObject smoke;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class BossBoomAction : MonoBehaviour
 
     void Explosion()
     {
-        RaycastHit[] rayhits = Physics.SphereCastAll(transform.position, 15, Vector3.up, 0f, LayerMask.GetMask("Player"));
+        RaycastHit[] rayhits = Physics.SphereCastAll(transform.position, 10, Vector3.up, 0f, LayerMask.GetMask("Player"));
 
         // 폭탄 범위 주인공의 피격 함수 호출
         foreach (RaycastHit hitObj in rayhits)
@@ -25,6 +26,8 @@ public class BossBoomAction : MonoBehaviour
                 hpComponent.CurrentHP -= attackDamage;
             }
         }
+
+        Instantiate(smoke, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }

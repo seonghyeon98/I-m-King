@@ -1606,8 +1606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 1627559748}
-  particleObj: {fileID: 0}
-  boss: {fileID: 7988094277207216310, guid: 83dab506297948d4d8d34c4fe12431ee, type: 3}
+  particleObj: {fileID: 131378, guid: 7602fe653b852db43b223112ce1825bf, type: 3}
+  boss: {fileID: 7988094277207216310, guid: 76891fc5142278141bdf60cfb9495258, type: 3}
 --- !u!4 &784857792
 Transform:
   m_ObjectHideFlags: 0
